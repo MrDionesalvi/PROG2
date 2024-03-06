@@ -3,6 +3,11 @@
 /* ad esempio: */
 
 
+tests[0].s = "\n3";   //check7
+tests[0].b = 10;
+tests[0].res = 1;
+tests[0].num = 3;
+
 tests[1].s = "0";   //check2
 tests[1].b = 1;
 tests[1].res = 0;
@@ -28,7 +33,13 @@ tests[5].b = 3;
 tests[5].res = 1;
 tests[5].num = 2;
 
-tests[6].s = "                 "; //check8
-tests[6].b = 10;
-tests[6].res = 0;
-tests[6].num = 0;
+tests[6].s = "10"; //check1q
+tests[6].b = 16;
+tests[6].res = 1;
+tests[6].num = 16;
+
+tests[7].s = "         "; //check8
+tests[7].b = 16;
+tests[7].res = 0;
+tests[7].num = 0;
+
