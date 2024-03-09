@@ -26,7 +26,7 @@ tests[3].res = 1;
 tests[3].num = 2;
 
 
-// Test numero 7
+// Test numero 11
 tests[4].s = "A";
 tests[4].b = 11;
 tests[4].res = 1;
