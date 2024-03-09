@@ -1,0 +1,14 @@
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+
+| Expected                                                              | Got                                                                   |
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+
+| /** TEST 1 **  c1: "paolo","rossi"  c2: "paolo","rossi" */            | contactEq(): 1 contactEqEff(): 1 contactCmp(): 0 contactCmpEff(): 0   |
+| /** TEST 2 ** c1: "","rossi"  c2: "","rossi" */                       | contactEq(): 1 contactEqEff(): 1 contactCmp(): 0 contactCmpEff(): 0   |
+| /** TEST 3 ** c1: "",""  c2: "","" */                                 | contactEq(): 1 contactEqEff(): 1 contactCmp(): 0 contactCmpEff(): 0   |
+| /** TEST 4 ** c1: "paolo","rossi"  c2: "paola","verdi" */             | contactEq(): 0 contactEqEff(): 0 contactCmp(): -1 contactCmpEff(): -1 |
+| /** TEST 5 ** c1: "vladimir","putin"  c2: "vladimiro","putin" */      | contactEq(): 0 contactEqEff(): 0 contactCmp(): -1 contactCmpEff(): -1 |
+| /** TEST 6 ** c1: "gian paolo","rossi" c2: "gianpaolo","rossi" */     | contactEq(): 0 contactEqEff(): 0 contactCmp(): -1 contactCmpEff(): -1 |
+| /** TEST 7 ** c1: "gianpaolo","" c2: "gian paolo","" */               | contactEq(): 0 contactEqEff(): 0 contactCmp(): 1 contactCmpEff(): 1   |
+| /** TEST 8 ** c1: "paolo","rossi" c2: "Paolo","Rossi" */              | contactEq(): 1 contactEqEff(): 1 contactCmp(): 0 contactCmpEff(): 0   |
+| /** TEST 9 ** c1: "pAoLo","rOsSi" c2: "PaOlO","RoSsI" */              | contactEq(): 1 contactEqEff(): 1 contactCmp(): 0 contactCmpEff(): 0   |
+| /** TEST 10 ** c1: "Fabrizio","De Andrè" c2: "Fabrizio","De André" */ | contactEq(): 0 contactEqEff(): 0 contactCmp(): -1 contactCmpEff(): -1 |
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+
