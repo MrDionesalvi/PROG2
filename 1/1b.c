@@ -16,33 +16,41 @@
  */
 int stoub(char *s, unsigned short b, int*r) {
     int ret = 0;
-    if(b < 2 || b > 36){
-        return ret;
+    if (b < 2 || b > 36) {
+        return ret; // Se la base non è nel range valido, restituisce 0
     }
     
     int sign = 1;
-    while(isspace(*s)){
+    // Ignoriamo eventuali spazi bianchi iniziali
+    while (isspace(*s)) {
         s++;
     }
-    if(*s == '-'){
+    
+    // Gestiamo il segno (+/-) se presente
+    if (*s == '-') {
         sign = -1;
+        s++;
+    } else if (*s == '+') {
+        s++;
     }
+    
     int result = 0;
-    for (; *s != '\0'; s++) {
+    bool specialCharacter = true; // Utilizziamo un flag per indicare la presenza di caratteri speciali (Non alfabeto :D)
+    for (; *s != '\0' && specialCharacter; s++) {
         int digitValue = -1;
         if (isdigit(*s)) {
             digitValue = *s - '0';
-            ret = 1;
+            ret = 1; // Indica che almeno una cifra valida è stata trovata
         } else if (isalpha(*s)) {
-            digitValue = toupper(*s) - 'A' + 10;
-            ret = 1;
+            digitValue = toupper(*s) - 'A' + 10; // Conversion tramite valore ASCII
+            ret = 1; // Indica che almeno una cifra valida è stata trovata
         }
         if (digitValue <= b && digitValue != -1) {
             result = result * b + digitValue;
+        } else if (digitValue == -1) {
+            specialCharacter = false; // Termina il ciclo se incontra un carattere non valido
         }
-
     }
-    result = result * sign;
-    *r = result;
-    return ret;
+    *r = result * sign; // Assegna il risultato al puntatore
+    return ret; // Restituisce 1 se almeno una cifra valida è stata trovata, altrimenti 0
 }
