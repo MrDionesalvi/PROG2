@@ -1,8 +1,8 @@
 // Test numero 1-3-7
-tests[0].s = "\n3";   
+tests[0].s = "\n-3";   
 tests[0].b = 10;
 tests[0].res = 1;
-tests[0].num = 3;
+tests[0].num = -3;
 
 // Test numero 2
 tests[1].s = "0";   
@@ -26,7 +26,7 @@ tests[3].res = 1;
 tests[3].num = 2;
 
 
-// Test numero 11
+// Test numero 9
 tests[4].s = "A";
 tests[4].b = 11;
 tests[4].res = 1;
@@ -39,7 +39,7 @@ tests[5].b = 3;
 tests[5].res = 1;
 tests[5].num = 2;
 
-// Test numero 10
+// Test numero 11
 tests[6].s = "10";
 tests[6].b = 16;
 tests[6].res = 1;
