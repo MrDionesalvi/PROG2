@@ -15,28 +15,21 @@
  *           Non si accorge dell'eventuale overflow (restituendo in questo caso un risultato tipicamente scorretto).
  */
 int stoub(char *s, unsigned short b, int*r) {
-    int ret = 0;
-    if (b < 2 || b > 36) {
-        return ret; // Se la base non è nel range valido, restituisce 0
-    }
+    // Se la base non è nel range valido, restituisce 0
+    if (b < 2 || b > 36) { return 0; }
     
-    int sign = 1;
     // Ignoriamo eventuali spazi bianchi iniziali
-    while (isspace(*s)) {
-        s++;
-    }
+    while (isspace(*s)) { s++; }
     
     // Gestiamo il segno (+/-) se presente
-    if (*s == '-') {
-        sign = -1;
-        s++;
-    } else if (*s == '+') {
+    int sign = 1;
+    if ((*s == '-') || (*s == '+')) { 
+        if(*s == '-') { sign = -1; }
         s++;
     }
-    
     int result = 0;
-    bool specialCharacter = true; // Utilizziamo un flag per indicare la presenza di caratteri speciali (Non alfabeto :D)
-    for (; *s != '\0' && specialCharacter; s++) {
+    int ret = 0;
+    while (*s != '\0' && ((*s >= '0' && *s <= '9') || (toupper(*s) >= 'A' && toupper(*s) <= 'Z'))){
         int digitValue = -1;
         if (isdigit(*s)) {
             digitValue = *s - '0';
@@ -47,9 +40,8 @@ int stoub(char *s, unsigned short b, int*r) {
         }
         if (digitValue <= b && digitValue != -1) {
             result = result * b + digitValue;
-        } else if (digitValue == -1) {
-            specialCharacter = false; // Termina il ciclo se incontra un carattere non valido
         }
+        s++;
     }
     *r = result * sign; // Assegna il risultato al puntatore
     return ret; // Restituisce 1 se almeno una cifra valida è stata trovata, altrimenti 0
