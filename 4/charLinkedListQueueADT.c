@@ -10,6 +10,7 @@ struct charQueue {
     ListNodePtr front; /* Punta al primo nodo della lista, che contiene l'elemento in testa alla coda, se la coda è vuota vale NULL */
     ListNodePtr rear; /* Punta all'ultimo nodo della lista, che contiene l'elemento in fondo alla coda, se la coda è vuota vale NULL */
     
+    unsigned int size;
     /* aggiungere eventuali altre variabili per ottenere una implementazione più efficiente */
 };
 
@@ -19,6 +20,7 @@ CharQueueADT mkQueue() {
     if (q != NULL) {
         q->front = NULL;
         q->rear = NULL;
+        q-> size = 0;
         return q;
     }
     return NULL;
@@ -46,6 +48,7 @@ _Bool enqueue(CharQueueADT q, const char e) {
             q->rear->next = new;
         }
         q->rear = new;
+        q->size++;
         ret = 1;
     }
     return ret;
@@ -60,6 +63,7 @@ _Bool dequeue(CharQueueADT q, char* res) {
         q->front = q->front->next;
         free(temp);
         ret = 1;
+        q->size--;
     }
     return ret;
 }
@@ -75,13 +79,7 @@ _Bool isEmpty(CharQueueADT q) {
 
 /* @brief Restituisce il numero degli elementi presenti nella coda */
 int size(CharQueueADT q) {
-    int ret = 0;
-    ListNodePtr temp = q->front;
-    while(temp != NULL){
-        ret++;
-        temp = temp->next;
-    }
-    return ret;
+    return q->size;
 }
 
 /* @brief Restituisce l'elemento nella posizione data (senza toglierlo) */
